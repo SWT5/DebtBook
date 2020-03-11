@@ -29,15 +29,14 @@
                  HorizontalAlignment="Left"
                  MinWidth="150"
                  Text="{Binding Path=CurrentCeptor.Name}"
-                 Style="{StaticResource InputStyle}"
                  TabIndex="1"
                  />
         <TextBox Grid.Column="1"
                  Grid.Row="1"
                  Name="tbxAmount"
                  Text="{Binding Path=CurrentDeptor.Amount}"
-                 Style="{StaticResource InputStyle}"
-                 TabIndex="2" TextChanged="tbxAmount_TextChanged"
+                 TabIndex="2" 
+                 TextChanged="tbxAmount_TextChanged"
                  />
         <WrapPanel Grid.Column="1" 
                    Grid.Row="2"
