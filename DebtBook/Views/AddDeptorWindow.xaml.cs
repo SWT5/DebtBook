@@ -28,5 +28,10 @@ namespace DebtBook.Views
         {
 
         }
+
+        private void BtnSave_Click(object sender, RoutedEventArgs e)
+        {
+            throw new NotImplementedException();
+        }
     }
 }
