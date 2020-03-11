@@ -24,7 +24,7 @@ namespace DebtBook
 
         #region properties
 
-        public ObservableCollection<Debtor> Deptors
+        public ObservableCollection<Debtor> Debtors
         {
             get { return deptors_; }
             set { SetProperty(ref deptors_, value);  }
@@ -72,7 +72,7 @@ namespace DebtBook
                     var tempDeptor = CurrentDeptor.Clone();
                     var vm = new DeptorViewModel("Edit Deptor", tempDeptor)
                     {
-                        Depts = depts_
+                        Debts = depts_
                     };
                     var dlg = new DeptorView()
                     {

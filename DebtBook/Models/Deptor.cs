@@ -12,9 +12,9 @@ namespace DebtBook.Models
     public class Debtor : BindableBase
     {
         private string name_;
-        private int dept_;
+        private int debt_;
 
-        private List<Dept> depts_;
+        private List<Debt> depts_;
 
         public Debtor()
         {
@@ -42,8 +42,8 @@ namespace DebtBook.Models
 
         public int Dept
         {
-            get { return dept_; }
-            set { SetProperty(ref dept_, value); }
+            get { return debt_; }
+            set { SetProperty(ref debt_, value); }
         }
 
 

@@ -40,14 +40,14 @@ namespace DebtBook.ViewModels
             set { SetProperty(ref currentDeptor_, value); }
         }
 
-        ObservableCollection<int> depts_;
+        ObservableCollection<int> debts_;
 
-        public ObservableCollection<int> Depts
+        public ObservableCollection<int> Debts
         {
-            get { return depts_; }
+            get { return debts_; }
             set
             {
-                SetProperty(ref depts_, value);
+                SetProperty(ref debts_, value);
             }
         }
 
