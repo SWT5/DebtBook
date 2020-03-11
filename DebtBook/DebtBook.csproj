@@ -71,7 +71,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="Models\Dept.cs" />
+    <Compile Include="Models\Debt.cs" />
     <Compile Include="Utilities\Clock.cs" />
     <Page Include="Views\AddDeptorWindow.xaml">
       <SubType>Designer</SubType>
@@ -89,7 +89,7 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Models\Deptor.cs" />
+    <Compile Include="Models\Debtor.cs" />
     <Compile Include="ViewModels\DeptorViewModel.cs" />
     <Compile Include="ViewModels\MainWindowViewModel.cs" />
     <Compile Include="Views\AddDeptorWindow.xaml.cs">

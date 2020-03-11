@@ -14,16 +14,16 @@ namespace DebtBook.Models
         private string name_;
         private int debt_;
 
-        private List<Debt> depts_;
+        //private List<Dept> depts_;
 
         public Debtor()
         {
-
         }
 
-        public Debtor(string name)
+        public Debtor(string name, int dept)
         {
             name_ = name;
+            debt_ = dept;
         }
 
         public Debtor Clone()
@@ -34,13 +34,10 @@ namespace DebtBook.Models
         public string Name
         {
             get { return name_; }
-            set
-            {
-                SetProperty(ref name_, value);
-            }
+            set { SetProperty(ref name_, value); }
         }
 
-        public int Dept
+        public int Debt
         {
             get { return debt_; }
             set { SetProperty(ref debt_, value); }

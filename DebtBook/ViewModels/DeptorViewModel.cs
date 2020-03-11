@@ -15,7 +15,7 @@ namespace DebtBook.ViewModels
         public DeptorViewModel(string title, Debtor debtor)
         {
             Title = title;
-            CurrentDeptor = debtor; 
+            CurrentDebtor = debtor; 
         }
 
         #region properties
@@ -32,12 +32,12 @@ namespace DebtBook.ViewModels
             }
         }
 
-        private Debtor currentDeptor_;
+        private Debtor currentDebtor_;
 
-        public Debtor CurrentDeptor
+        public Debtor CurrentDebtor
         {
-            get { return currentDeptor_; }
-            set { SetProperty(ref currentDeptor_, value); }
+            get { return currentDebtor_; }
+            set { SetProperty(ref currentDebtor_, value); }
         }
 
         ObservableCollection<int> debts_;
