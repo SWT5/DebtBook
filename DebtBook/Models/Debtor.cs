@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Configuration;
 using System.Linq;
+using System.Security.RightsManagement;
 using System.Text;
 using System.Threading.Tasks;
 using DebtBook.Models;
@@ -12,18 +14,18 @@ namespace DebtBook.Models
     public class Debtor : BindableBase
     {
         private string name_;
-        private int debt_;
-
-        //private List<Dept> depts_;
+        private int amount_;
+        
 
         public Debtor()
         {
         }
 
-        public Debtor(string name, int dept)
+        public Debtor(string name,int amount)
         {
             name_ = name;
-            debt_ = dept;
+            amount_ = amount;
+
         }
 
         public Debtor Clone()
@@ -37,12 +39,13 @@ namespace DebtBook.Models
             set { SetProperty(ref name_, value); }
         }
 
-        public int Debt
-        {
-            get { return debt_; }
-            set { SetProperty(ref debt_, value); }
-        }
+        ObservableCollection<Debt> debts_;
 
+        public ObservableCollection<Debt> Debts
+        {
+            get { return debts_; }
+            set { SetProperty(ref debts_, value); }
+        }
 
 
     }
