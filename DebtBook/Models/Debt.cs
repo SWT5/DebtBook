@@ -8,7 +8,7 @@ using Prism.Mvvm;
 
 namespace DebtBook.Models
 {
-    public class Dept : BindableBase
+    public class Debt : BindableBase
     {
         public int amount_ { get; set; }
         public DateTime date_;

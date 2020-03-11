@@ -32,7 +32,9 @@
         />
         <StackPanel Grid.Column="1"
                     Margin="5,5">
-            <Label Margin="5,0">Value</Label>
+            <Label Margin="5,0">
+                Value
+            </Label>
             <TextBox
                 Name="tbxValue"
                 Margin="5,5"
