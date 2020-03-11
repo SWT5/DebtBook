@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.Linq;
-using System.Text;
-using System.Threading;
-using System.Threading.Tasks;
+﻿using System.Collections.ObjectModel;
 using System.Windows.Input;
 using DebtBook.Models;
 using DebtBook.ViewModels;
@@ -16,29 +10,29 @@ namespace DebtBook
 {
     public class MainWindowViewModel : BindableBase
     {
-        private ObservableCollection<Deptor> deptors_;
+        private ObservableCollection<Debtor> deptors_;
 
 
         public MainWindowViewModel()
         {
-            deptors_ = new ObservableCollection<Deptor>
+            deptors_ = new ObservableCollection<Debtor>
             {
-                new Deptor("maria")
+                new Debtor("maria")
             };
             CurrentDeptor = null; 
         }
 
         #region properties
 
-        public ObservableCollection<Deptor> Deptors
+        public ObservableCollection<Debtor> Deptors
         {
             get { return deptors_; }
             set { SetProperty(ref deptors_, value);  }
         }
 
-        private Deptor currentDeptor_ = null;
+        Debtor currentDeptor_ = null;
 
-        public Deptor CurrentDeptor
+        public Debtor CurrentDeptor
         {
             get { return currentDeptor_; }
             set { SetProperty(ref currentDeptor_, value); }
