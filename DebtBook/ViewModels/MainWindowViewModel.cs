@@ -16,32 +16,33 @@ namespace DebtBook
 {
     public class MainWindowViewModel : BindableBase
     {
-        private ObservableCollection<Deptor> deptors_;
+        private ObservableCollection<Debtor> debtors_;
 
 
         public MainWindowViewModel()
         {
-            deptors_ = new ObservableCollection<Deptor>
+            debtors_ = new ObservableCollection<Debtor>
             {
-                new Deptor("maria")
+                new Debtor("maria", 100),
+                new Debtor("Jens", 200)
             };
-            CurrentDeptor = null; 
+            CurrentDebtor = null; 
         }
 
         #region properties
 
-        public ObservableCollection<Deptor> Deptors
+        public ObservableCollection<Debtor> Debtors
         {
-            get { return deptors_; }
-            set { SetProperty(ref deptors_, value);  }
+            get { return debtors_; }
+            set { SetProperty(ref debtors_, value);  }
         }
 
-        private Deptor currentDeptor_ = null;
+        private Debtor currentDebtor_ = null;
 
-        public Deptor CurrentDeptor
+        public Debtor CurrentDebtor
         {
-            get { return currentDeptor_; }
-            set { SetProperty(ref currentDeptor_, value); }
+            get { return currentDebtor_; }
+            set { SetProperty(ref currentDebtor_, value); }
         }
 
         int currentIndex_ = -1;
@@ -52,14 +53,14 @@ namespace DebtBook
             set { SetProperty(ref currentIndex_, value); }
         }
 
-        ObservableCollection<int> depts_;
+        ObservableCollection<int> debts_;
 
         public ObservableCollection<int> Depts
         {
-            get { return depts_; }
+            get { return debts_; }
             set
             {
-                SetProperty(ref depts_, value);
+                SetProperty(ref debts_, value);
             }
         }
 
@@ -75,10 +76,10 @@ namespace DebtBook
             {
                 return editCommand_ ?? (editCommand_ = new DelegateCommand(() =>
                 {
-                    var tempDeptor = CurrentDeptor.Clone();
-                    var vm = new DeptorViewModel("Edit Deptor", tempDeptor)
+                    var tempDebtor = CurrentDebtor.Clone();
+                    var vm = new DeptorViewModel("Edit Deptor", tempDebtor)
                     {
-                        Depts = depts_
+                        Debts = debts_
                     };
                     var dlg = new DeptorView()
                     {
@@ -88,8 +89,8 @@ namespace DebtBook
                     if (dlg.ShowDialog() == true)
                     {
                         // Copy values back
-                        CurrentDeptor.Name = tempDeptor.Name;
-                        CurrentDeptor.Dept = tempDeptor.Dept;
+                        CurrentDebtor.Name = tempDebtor.Name;
+                        CurrentDebtor.Debt = tempDebtor.Debt;
                         //Dirty = true;
                     }
                 },

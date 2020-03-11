@@ -25,7 +25,7 @@
                   SelectedItem="{Binding Path=CurrentDeptor}"
                   SelectedIndex="{Binding Path=CurrentIndex}"
                   IsSynchronizedWithCurrentItem="True"
-                  Margin="5,5"
+                  Margin="5,0,5,10"
                   CanUserAddRows="False"
                   CanUserDeleteRows="False"
                   IsReadOnly="True"

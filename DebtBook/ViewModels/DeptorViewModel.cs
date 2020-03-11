@@ -12,10 +12,10 @@ namespace DebtBook.ViewModels
     public class DeptorViewModel : BindableBase
     {
 
-        public DeptorViewModel(string title, Deptor deptor)
+        public DeptorViewModel(string title, Debtor debtor)
         {
             Title = title;
-            CurrentDeptor = deptor; 
+            CurrentDebtor = debtor; 
         }
 
         #region properties
@@ -32,22 +32,22 @@ namespace DebtBook.ViewModels
             }
         }
 
-        private Deptor currentDeptor_;
+        private Debtor currentDebtor_;
 
-        public Deptor CurrentDeptor
+        public Debtor CurrentDebtor
         {
-            get { return currentDeptor_; }
-            set { SetProperty(ref currentDeptor_, value); }
+            get { return currentDebtor_; }
+            set { SetProperty(ref currentDebtor_, value); }
         }
 
-        ObservableCollection<int> depts_;
+        ObservableCollection<int> debts_;
 
-        public ObservableCollection<int> Depts
+        public ObservableCollection<int> Debts
         {
-            get { return depts_; }
+            get { return debts_; }
             set
             {
-                SetProperty(ref depts_, value);
+                SetProperty(ref debts_, value);
             }
         }
 

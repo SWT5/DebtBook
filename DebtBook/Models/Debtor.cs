@@ -9,40 +9,38 @@ using Prism.Mvvm;
 
 namespace DebtBook.Models
 {
-    public class Deptor : BindableBase
+    public class Debtor : BindableBase
     {
         private string name_;
-        private int dept_;
+        private int debt_;
 
         //private List<Dept> depts_;
 
-        public Deptor()
+        public Debtor()
         {
         }
 
-        public Deptor(string name)
+        public Debtor(string name, int dept)
         {
             name_ = name;
+            debt_ = dept;
         }
 
-        public Deptor Clone()
+        public Debtor Clone()
         {
-            return this.MemberwiseClone() as Deptor;
+            return this.MemberwiseClone() as Debtor;
         }
 
         public string Name
         {
             get { return name_; }
-            set
-            {
-                SetProperty(ref name_, value);
-            }
+            set { SetProperty(ref name_, value); }
         }
 
-        public int Dept
+        public int Debt
         {
-            get { return dept_; }
-            set { SetProperty(ref dept_, value); }
+            get { return debt_; }
+            set { SetProperty(ref debt_, value); }
         }
 
 
