@@ -32,11 +32,8 @@
                   MinRowHeight="12"
                   Name="dbDeptors"
                   >
-            <i:Interaction.Triggers>
-                <i:EventTrigger EventName="MouseDoubleClick">
-                    <prism:InvokeCommandAction Command="{Binding EditDeptorCommand}"/>
-                </i:EventTrigger>
-            </i:Interaction.Triggers>
+
+            
         </DataGrid>
         <StackPanel Grid.Column="1"
                     Grid.Row="1"
