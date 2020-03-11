@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Configuration;
 using System.Linq;
 using System.Text;
@@ -13,8 +14,6 @@ namespace DebtBook.Models
     {
         private string name_;
         private int dept_;
-
-        //private List<Dept> depts_;
 
         public Deptor()
         {
@@ -39,11 +38,19 @@ namespace DebtBook.Models
             }
         }
 
-        public int Dept
+        public ObservableCollection<Dept> depts_;
+        public ObservableCollection<Dept> Depts
+        {
+            get { return depts_; }
+            set { SetProperty(ref depts_, value); }
+        }
+
+
+        /*public int Dept
         {
             get { return dept_; }
             set { SetProperty(ref dept_, value); }
-        }
+        }*/
 
 
 

@@ -10,13 +10,19 @@ namespace DebtBook.Models
 {
     public class Dept : BindableBase
     {
-        private int amount_ { get; set; }
-        public string date_ { get; set; }
+        public int amount_ { get; set; }
+        public DateTime date_;
+
+        public DateTime Date
+        {
+            get { return date_.Date; }
+            set { SetProperty(ref date_, value); }
+        }
         
 
 
-        Clock clock = new Clock();
-        public Clock Clock_ { get => clock; set => clock = value; }
+        /*Clock clock = new Clock();
+        public Clock Clock_ { get => clock; set => clock = value; }*/
 
         
     }
