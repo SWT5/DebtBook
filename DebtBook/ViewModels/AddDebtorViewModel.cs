@@ -35,6 +35,8 @@ namespace DebtBook.ViewModels
                     isValid = false;
                 return isValid;
             }
+
+                
         }
 
         #endregion

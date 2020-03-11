@@ -14,17 +14,16 @@ namespace DebtBook.Models
     public class Debtor : BindableBase
     {
         private string name_;
-        private int amount_;
+        //private int amount_;
         
 
         public Debtor()
         {
         }
 
-        public Debtor(string name,int amount)
+        public Debtor(string name)
         {
             name_ = name;
-            amount_ = amount;
 
         }
 
