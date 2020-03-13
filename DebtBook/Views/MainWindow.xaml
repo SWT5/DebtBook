@@ -9,10 +9,8 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="400" Width="800">
         <Window.DataContext>
-        
-        </Window.DataContext>
 
-  
+        </Window.DataContext>
     <Grid>
        <Grid.RowDefinitions>
             <RowDefinition Height="auto"/>
