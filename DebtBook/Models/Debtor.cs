@@ -14,7 +14,7 @@ namespace DebtBook.Models
     public class Debtor : BindableBase
     {
         private string name_;
-        //private int amount_;
+        private int totalDebt_;
         
 
         public Debtor()
@@ -24,7 +24,7 @@ namespace DebtBook.Models
         public Debtor(string name)
         {
             name_ = name;
-
+            // ekstra parameter i construoter som smider den gæld ind på næste ledige plads i listen af gæld
         }
 
         public Debtor Clone()
@@ -46,6 +46,18 @@ namespace DebtBook.Models
             set { SetProperty(ref debts_, value); }
         }
 
+        public int TotalDebt
+        {
+            get { return totalDebt_; }
+            set
+            {
+                foreach (var debt in Debts)
+                {
+                    totalDebt_ += debt.amount_;
+                }
+            }
+
+        }
 
     }
 }
