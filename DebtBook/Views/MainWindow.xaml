@@ -8,7 +8,10 @@
         xmlns:prism="http://prismlibrary.com/"
         mc:Ignorable="d"
         Title="MainWindow" Height="400" Width="800">
-    <Grid>
+    <Window.DataContext>
+        <local:MainWindowViewModel/>
+    </Window.DataContext>
+            <Grid>
        <Grid.RowDefinitions>
             <RowDefinition Height="auto"/>
             <RowDefinition Height="1*"/>
@@ -43,7 +46,7 @@
                     HorizontalAlignment="Center"
                     VerticalAlignment="Top"
                     Margin="5,5">
-            <Button Margin="5,5">Add Deptor</Button>
+            <Button Margin="5,5" Command="{Binding Path=Add_Debtor_Command}">Add Deptor</Button>
         </StackPanel>
 
     </Grid>

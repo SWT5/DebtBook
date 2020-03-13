@@ -22,7 +22,7 @@ namespace DebtBook
 
         public MainWindowViewModel()
         {
-            debtors_ = new ObservableCollection<Debtor>
+            Debtors = new ObservableCollection<Debtor>
             {
                 #if DEBUG
                 new Debtor("maria", 100),
@@ -83,7 +83,7 @@ namespace DebtBook
                     var vm = new DeptorViewModel("Edit Deptor", tempDebtor)
                     {
                         Debts = debts_
-                    };
+                    };  
                     var dlg = new DeptorView()
                     {
                         DataContext = vm,
@@ -93,7 +93,7 @@ namespace DebtBook
                     {
                         // Copy values back
                         CurrentDebtor.Name = tempDebtor.Name;
-                        CurrentDebtor.Debt = tempDebtor.Debt;
+                        CurrentDebtor.Debts = tempDebtor.Debts;
                         //Dirty = true;
                     }
                 },
@@ -103,6 +103,21 @@ namespace DebtBook
                 ).ObservesProperty(()=> CurrentIndex));
             }
         }
+
+        private ICommand add_debtor_Command_;
+
+        public ICommand Add_Debtor_Command
+        {
+            get
+            {
+                return add_debtor_Command_ ?? (add_debtor_Command_ = new DelegateCommand(() =>
+                {
+                    var tempAddDebtor = new Debtor();
+                    debtors_.Add(tempAddDebtor);
+                }));
+            }
+        }
+
 
         #endregion
 
