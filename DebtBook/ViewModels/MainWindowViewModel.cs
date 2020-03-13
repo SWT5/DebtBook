@@ -80,7 +80,7 @@ namespace DebtBook
                 return editCommand_ ?? (editCommand_ = new DelegateCommand(() =>
                 {
                     var tempDebtor = CurrentDebtor.Clone();
-                    var vm = new DeptorViewModel("Edit Deptor", tempDebtor)
+                    var vm = new DeptorViewModel("Edit Debtor", tempDebtor)
                     {
                         Debts = debts_
                     };  
