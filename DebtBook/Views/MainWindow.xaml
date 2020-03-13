@@ -8,7 +8,10 @@
         xmlns:prism="http://prismlibrary.com/"
         mc:Ignorable="d"
         Title="MainWindow" Height="400" Width="800">
-    <Grid>
+    <Window.DataContext>
+        <local:MainWindowViewModel/>
+    </Window.DataContext>
+            <Grid>
        <Grid.RowDefinitions>
             <RowDefinition Height="auto"/>
             <RowDefinition Height="1*"/>
@@ -18,10 +21,10 @@
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
        <Label Margin="5,0"
-              Grid.Column="0">Deptors</Label>
+              Grid.Column="0">Debtors</Label>
         <DataGrid Grid.Column="0"
                   Grid.Row="1"
-                  ItemsSource="{Binding Path=Deptors}"
+                  ItemsSource="{Binding Path=Debtors}"
                   SelectedItem="{Binding Path=CurrentDeptor}"
                   SelectedIndex="{Binding Path=CurrentIndex}"
                   IsSynchronizedWithCurrentItem="True"
@@ -34,7 +37,7 @@
                   >
             <i:Interaction.Triggers>
                 <i:EventTrigger EventName="MouseDoubleClick">
-                    <prism:InvokeCommandAction Command="{Binding EditDeptorCommand}"/>
+                    <prism:InvokeCommandAction Command="{Binding EditDebtorCommand}"/>
                 </i:EventTrigger>
             </i:Interaction.Triggers>
         </DataGrid>
@@ -43,7 +46,7 @@
                     HorizontalAlignment="Center"
                     VerticalAlignment="Top"
                     Margin="5,5">
-            <Button Margin="5,5">Add Deptor</Button>
+            <Button Margin="5,5" Command="{Binding Path=Add_Debtor_Command}">Add Deptor</Button>
         </StackPanel>
 
     </Grid>
