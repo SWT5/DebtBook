@@ -15,17 +15,15 @@ namespace DebtBook.Models
     {
         private string name_;
         private int totalDebt_;
+        private Debt debt_ = new Debt(); 
         
-
-        public Debtor()
-        {
-        }
 
         public Debtor(string name, int debt)    // skal muligvis være af type Debt
         {
             name_ = name;
+            debt_.amount_ = debt;
             // ekstra parameter i construoter som smider den gæld ind på næste ledige plads i listen af gæld
-            // kald funktion til at indsætte 
+            // kald funktion til at indsætte
         }
 
         public Debtor Clone()
@@ -52,12 +50,12 @@ namespace DebtBook.Models
             get { return totalDebt_; }
             set
             {
+                totalDebt_ = 0;
                 foreach (var debt in Debts)
                 {
                     totalDebt_ += debt.amount_;
                 }
             }
-
         }
 
     }
