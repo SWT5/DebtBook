@@ -19,7 +19,6 @@ namespace DebtBook
     {
         private ObservableCollection<Debtor> debtors_;
 
-
         public MainWindowViewModel()
         {
             Debtors = new ObservableCollection<Debtor>
@@ -34,7 +33,7 @@ namespace DebtBook
 
         #region properties
 
-        public ObservableCollection<Debtor> Debtors     // dette skulle gerne virke
+        public ObservableCollection<Debtor> Debtors     // dette skulle gerne virke ny kommentar igen
         {
             get { return debtors_; }
             set { SetProperty(ref debtors_, value);  }
@@ -58,7 +57,7 @@ namespace DebtBook
 
         ObservableCollection<int> debts_;
 
-        public ObservableCollection<int> Depts
+        public ObservableCollection<int> Debts
         {
             get { return debts_; }
             set
@@ -83,7 +82,7 @@ namespace DebtBook
                     var vm = new DeptorViewModel("Edit Debtor", tempDebtor)
                     {
                         Debts = debts_
-                    };  
+                    };
                     var dlg = new DeptorView()
                     {
                         DataContext = vm,
@@ -97,26 +96,27 @@ namespace DebtBook
                         //Dirty = true;
                     }
                 },
-                () => { 
+                () =>
+                {
                     return CurrentIndex >= 0;
                 }
-                ).ObservesProperty(()=> CurrentIndex));
+                ).ObservesProperty(() => CurrentIndex));
             }
         }
 
-        //private ICommand add_debtor_Command_;
+        private ICommand add_debtor_Command_;
 
-        //public ICommand Add_Debtor_Command
-        //{
-        //    get
-        //    {
-        //        return add_debtor_Command_ ?? (add_debtor_Command_ = new DelegateCommand(() =>
-        //        {
-        //            var tempAddDebtor = new Debtor();
-        //            debtors_.Add(tempAddDebtor);
-        //        }));
-        //    }
-        //}
+        public ICommand Add_Debtor_Command
+        {
+            get
+            {
+                return add_debtor_Command_ ?? (add_debtor_Command_ = new DelegateCommand(() =>
+                {
+                    var tempAddDebtor = new Debtor();
+                    debtors_.Add(tempAddDebtor);
+                }));
+            }
+        }
 
 
         #endregion
