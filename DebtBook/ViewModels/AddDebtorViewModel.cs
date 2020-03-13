@@ -24,7 +24,7 @@ namespace DebtBook.ViewModels
 
             debtors_ = new ObservableCollection<Debtor>()
             {
-                new Debtor("mads")  // her evt. smid gæld i
+                new Debtor("mads", 220)  // her evt. smid gæld i
             };
         }
 
