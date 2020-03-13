@@ -104,19 +104,19 @@ namespace DebtBook
             }
         }
 
-        private ICommand add_debtor_Command_;
+        //private ICommand add_debtor_Command_;
 
-        public ICommand Add_Debtor_Command
-        {
-            get
-            {
-                return add_debtor_Command_ ?? (add_debtor_Command_ = new DelegateCommand(() =>
-                {
-                    var tempAddDebtor = new Debtor();
-                    debtors_.Add(tempAddDebtor);
-                }));
-            }
-        }
+        //public ICommand Add_Debtor_Command
+        //{
+        //    get
+        //    {
+        //        return add_debtor_Command_ ?? (add_debtor_Command_ = new DelegateCommand(() =>
+        //        {
+        //            var tempAddDebtor = new Debtor();
+        //            debtors_.Add(tempAddDebtor);
+        //        }));
+        //    }
+        //}
 
 
         #endregion
