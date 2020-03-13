@@ -93,7 +93,7 @@ namespace DebtBook
                     {
                         // Copy values back
                         CurrentDebtor.Name = tempDebtor.Name;
-                        CurrentDebtor.Debt = tempDebtor.Debt;
+                        CurrentDebtor.Debts = tempDebtor.Debts;
                         //Dirty = true;
                     }
                 },
