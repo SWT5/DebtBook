@@ -4,7 +4,9 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 using System.Windows.Input;
+using DebtBook.Data;
 using DebtBook.Models;
 using Prism.Commands;
 using Prism.Mvvm;
@@ -13,7 +15,9 @@ namespace DebtBook.ViewModels
 {
     public class AddDebtorViewModel : BindableBase
     {
-        private ObservableCollection<Debtor> debtors_; 
+        private string filePath_ = "";
+        private readonly string AppTitle = "DebtBook";
+        private ObservableCollection<Debtor> debtors_;  
         public AddDebtorViewModel()
         {
             CurrentDebtor = null; 
@@ -51,6 +55,42 @@ namespace DebtBook.ViewModels
                 return isValid;
             }
         }
+
+
+        private string filename_ = "";
+        public string Filename
+        {
+            get { return filename_; }
+            set
+            {
+                SetProperty(ref filename_, value);
+                RaisePropertyChanged("Title");
+            }
+        }
+
+        public string Title
+        {
+            get
+            {
+                var s = "";
+                if (Dirty)
+                    s = "*";
+                return Filename + s + " - " + AppTitle;
+            }
+        }
+
+        private bool dirty = false;
+        public bool Dirty
+        {
+            get { return dirty; }
+            set
+            {
+                SetProperty(ref dirty, value);
+                RaisePropertyChanged("Title");
+            }
+        }
+
+
         #endregion
 
         #region Commands
@@ -60,7 +100,6 @@ namespace DebtBook.ViewModels
 
         public ICommand SaveBtnCommand
         {
-
             get
             {
                 return saveBtnCommand_ ?? (saveBtnCommand_ =
@@ -68,6 +107,31 @@ namespace DebtBook.ViewModels
                                .ObservesProperty(() => Debtors.Count));
             }
         }
+
+
+        private void SaveFileCommand_Execute()
+        {
+            SaveFile();
+        }
+
+        private bool SaveFileCommand_CanExecute()
+        {
+            return (filename_ != "") && (Debtors.Count > 0);
+        }
+
+        private void SaveFile()
+        {
+            try
+            {
+                Repository.SaveFile(filePath_, Debtors);
+                Dirty = false;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Unable to save file", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+        }
+
         // cancelbtn 
 
         #endregion

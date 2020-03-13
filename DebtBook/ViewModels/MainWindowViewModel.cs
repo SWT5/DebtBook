@@ -23,7 +23,7 @@ namespace DebtBook
         {
             debtors_ = new ObservableCollection<Debtor>
             {
-                new Debtor("maria", 100),
+                new Debtor("maria", 100),//  debtor tager ikke to parametre endnu
                 new Debtor("Jens", 200)
             };
             CurrentDebtor = null; 

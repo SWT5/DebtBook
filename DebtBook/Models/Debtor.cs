@@ -21,10 +21,11 @@ namespace DebtBook.Models
         {
         }
 
-        public Debtor(string name)
+        public Debtor(string name, int debt)    // skal muligvis være af type Debt
         {
             name_ = name;
             // ekstra parameter i construoter som smider den gæld ind på næste ledige plads i listen af gæld
+            // kald funktion til at indsætte 
         }
 
         public Debtor Clone()
