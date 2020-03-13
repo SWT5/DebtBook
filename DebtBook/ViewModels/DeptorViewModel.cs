@@ -7,18 +7,23 @@ using System.Threading.Tasks;
 using DebtBook.Models;
 using Prism.Mvvm;
 
-namespace DebtBook.ViewModels
+namespace DebtBook
 {
     public class DeptorViewModel : BindableBase
     {
 
+        public DeptorViewModel()
+        { }
+
         public DeptorViewModel(string title, Debtor debtor)
         {
+            Debts = new ObservableCollection<Debt>();
             Title = title;
             CurrentDebtor = debtor; 
         }
 
         #region properties
+
 
         private string title_;
 
@@ -40,9 +45,9 @@ namespace DebtBook.ViewModels
             set { SetProperty(ref currentDebtor_, value); }
         }
 
-        ObservableCollection<int> debts_;
+        ObservableCollection<Debt> debts_;
 
-        public ObservableCollection<int> Debts
+        public ObservableCollection<Debt> Debts
         {
             get { return debts_; }
             set
