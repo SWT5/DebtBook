@@ -18,10 +18,10 @@
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
        <Label Margin="5,0"
-              Grid.Column="0">Deptors</Label>
+              Grid.Column="0">Debtors</Label>
         <DataGrid Grid.Column="0"
                   Grid.Row="1"
-                  ItemsSource="{Binding Path=Deptors}"
+                  ItemsSource="{Binding Path=Debtors}"
                   SelectedItem="{Binding Path=CurrentDeptor}"
                   SelectedIndex="{Binding Path=CurrentIndex}"
                   IsSynchronizedWithCurrentItem="True"
@@ -32,8 +32,11 @@
                   MinRowHeight="12"
                   Name="dbDeptors"
                   >
-
-            
+            <i:Interaction.Triggers>
+                <i:EventTrigger EventName="MouseDoubleClick">
+                    <prism:InvokeCommandAction Command="{Binding EditDebtorCommand}"/>
+                </i:EventTrigger>
+            </i:Interaction.Triggers>
         </DataGrid>
         <StackPanel Grid.Column="1"
                     Grid.Row="1"
