@@ -80,7 +80,7 @@ namespace DebtBook
                 return editCommand_ ?? (editCommand_ = new DelegateCommand(() =>
                 {
                     var tempDebtor = CurrentDebtor.Clone();
-                    var vm = new DeptorViewModel("Edit Deptor", tempDebtor)
+                    var vm = new DeptorViewModel("Edit Debtor", tempDebtor)
                     {
                         Debts = debts_
                     };  
@@ -104,19 +104,19 @@ namespace DebtBook
             }
         }
 
-        private ICommand add_debtor_Command_;
+        //private ICommand add_debtor_Command_;
 
-        public ICommand Add_Debtor_Command
-        {
-            get
-            {
-                return add_debtor_Command_ ?? (add_debtor_Command_ = new DelegateCommand(() =>
-                {
-                    var tempAddDebtor = new Debtor();
-                    debtors_.Add(tempAddDebtor);
-                }));
-            }
-        }
+        //public ICommand Add_Debtor_Command
+        //{
+        //    get
+        //    {
+        //        return add_debtor_Command_ ?? (add_debtor_Command_ = new DelegateCommand(() =>
+        //        {
+        //            var tempAddDebtor = new Debtor();
+        //            debtors_.Add(tempAddDebtor);
+        //        }));
+        //    }
+        //}
 
 
         #endregion
