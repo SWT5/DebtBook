@@ -14,7 +14,7 @@ namespace DebtBook.Models
     public class Debtor : BindableBase
     {
         private string name_;
-        private int totalDebt_;
+        //private int totalDebt_;
         private Debt debt_ = new Debt();
 
         public Debtor()
@@ -47,18 +47,18 @@ namespace DebtBook.Models
             set { SetProperty(ref debts_, value); }
         }
 
-        public int TotalDebt
-        {
-            get { return totalDebt_; }
-            set
-            {
-                totalDebt_ = 0;
-                foreach (var debt in Debts)
-                {
-                    totalDebt_ += debt.amount_;
-                }
-            }
-        }
+        //public int TotalDebt
+        //{
+        //    get { return totalDebt_; }
+        //    set
+        //    {
+        //        totalDebt_ = 0;
+        //        foreach (var debt in Debts)
+        //        {
+        //            totalDebt_ += debt.amount_;
+        //        }
+        //    }
+        //}
 
     }
 }
