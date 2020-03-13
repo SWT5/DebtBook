@@ -34,7 +34,7 @@ namespace DebtBook
 
         #region properties
 
-        public ObservableCollection<Debtor> Debtors
+        public ObservableCollection<Debtor> Debtors     // dette skulle gerne virke
         {
             get { return debtors_; }
             set { SetProperty(ref debtors_, value);  }
