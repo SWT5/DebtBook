@@ -11,6 +11,7 @@ using DebtBook.ViewModels;
 using DebtBook.Views;
 using Prism.Commands;
 using Prism.Mvvm;
+using System.Windows.Data;
 
 namespace DebtBook
 {
@@ -23,8 +24,10 @@ namespace DebtBook
         {
             debtors_ = new ObservableCollection<Debtor>
             {
+                #if DEBUG
                 new Debtor("maria", 100),
                 new Debtor("Jens", 200)
+                #endif
             };
             CurrentDebtor = null; 
         }
@@ -70,7 +73,7 @@ namespace DebtBook
 
         private ICommand editCommand_;
 
-        public ICommand EdiDeptorCommand
+        public ICommand EditDebtorCommand
         {
             get
             {
