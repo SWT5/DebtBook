@@ -127,31 +127,6 @@ namespace DebtBook
             }
         }
 
-        ICommand _newDebtorCommand;
-        public ICommand addNewDebtorCommand
-        {
-            get
-            {
-                return _newDebtorCommand ?? (_newDebtorCommand = new DelegateCommand(() =>
-                {
-                    var newDebtor = new Debtor();
-                    var vm = new AddDebtorViewModel("Add New Debtor", newDebtor);
-                    {
-                        Debtors = debtors_;
-                    }
-                    var dlg = new AddDeptorWindow
-                    {
-                        DataContext = vm
-                    };
-                    if (dlg.ShowDialog() == true)
-                    {
-                        debtors_.Add(newDebtor);
-                        //CurrentDebtor = newDebtor;
-                    }
-                }));
-
-            }
-        }
 
 
         #endregion
