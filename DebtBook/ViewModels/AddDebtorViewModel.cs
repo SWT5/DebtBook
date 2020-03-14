@@ -104,6 +104,7 @@ namespace DebtBook.ViewModels
             {
                 return saveBtnCommand_ ?? (saveBtnCommand_ =
                            new DelegateCommand(SaveFileCommand_Execute, SaveFileCommand_CanExecute)
+                               //.ObservesProperty(() => CurrentDebtor.Debts));
                                .ObservesProperty(() => Debtors.Count));
             }
         }
@@ -131,6 +132,8 @@ namespace DebtBook.ViewModels
                 MessageBox.Show(ex.Message, "Unable to save file", MessageBoxButton.OK, MessageBoxImage.Error);
             }
         }
+
+     
 
         // cancelbtn 
 

@@ -4,6 +4,7 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Input;
 using DebtBook.Models;
 using Prism.Mvvm;
 
@@ -57,5 +58,14 @@ namespace DebtBook
         }
 
         #endregion
+
+
+        private ICommand addDebtCommand;
+
+        public ICommand AddDebtCommand
+        {
+
+        }
+
     }
 }
