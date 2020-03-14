@@ -46,7 +46,10 @@
                     HorizontalAlignment="Center"
                     VerticalAlignment="Top"
                     Margin="5,5">
-            <Button Margin="5,5" Command="{Binding Path=Add_Debtor_Command}">Add Detor</Button>
+            <Button Margin="5,5" 
+                    Command="{Binding Path=Add_Debtor_Command}">
+                Add Detor
+            </Button>
         </StackPanel>
 
     </Grid>
