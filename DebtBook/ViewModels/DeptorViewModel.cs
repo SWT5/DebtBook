@@ -58,42 +58,25 @@ namespace DebtBook
             }
         }
 
-        //public bool IsValid
-        //{
-        //    get
-        //    {
-        //        bool isValid = true;
-        //        if (string.IsNullOrWhiteSpace((CurrentDebtor.Debts.ToString())))
-        //            isValid = false;
-        //        return isValid;
-        //    }
-        //}
 
         #endregion
 
 
         #region commands
 
-        //private ICommand addDebtBtnCommand_;
+        
+        ICommand addDebtCommand_;
+        public ICommand AddDebtCommand
+        {
+            get
+            {
+                return addDebtCommand_ ?? (addDebtCommand_ = new DelegateCommand(() =>
+                           {
+                               CurrentDebtor.Add_debt(CurrentDebtor.DebtAdd);
+                           }));
+            }
+        }
 
-        //public ICommand AddDebtBtnCommand
-        //{
-        //    get
-        //    {
-        //        return addDebtBtnCommand_ ?? (addDebtBtnCommand_ = new DelegateCommand(
-        //                AddDebtBtnCommand_Execute, AddDebtBtnCommand_CanExecute)
-        //            .ObservesProperty(() => CurrentDebtor.Debts));
-        //    }
-        //}
-
-        //private void AddDebtBtnCommand_Execute()
-        //{
-        //}
-
-        //private bool AddDebtBtnCommand_CanExecute()
-        //{
-        //    return IsValid;
-        //}
 
 
 

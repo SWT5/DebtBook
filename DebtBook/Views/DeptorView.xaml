@@ -46,14 +46,14 @@
                 VerticalAlignment="Center"
                 HorizontalAlignment="Center"
                 MinWidth="120"
-                Text="{Binding Path=CurrentDebtor}"/>
+                Text="{Binding Path=CurrentDebtor.DebtAdd}"/>
             <Button Margin="5,5"
                     VerticalAlignment="Center"
                     HorizontalAlignment="Center"
                     Width="75"
                     Content="_Add Debt"
                     Name="btnAddDept"
-                    Command="{Binding Path=AddDebtBtnCommand}"></Button>
+                    Command="{Binding Path=AddDebtCommand}"></Button>
         </StackPanel>
         <TextBlock Grid.Column="1"
                    Grid.Row="1"
