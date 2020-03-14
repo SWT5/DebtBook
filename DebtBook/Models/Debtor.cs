@@ -38,8 +38,14 @@ namespace DebtBook.Models
 
         public string Name
         {
-            get { return name_; }
-            set { SetProperty(ref name_, value); }
+            get
+            {
+                return name_;
+            }
+            set
+            {
+                SetProperty(ref name_, value);
+            }
         }
 
         ObservableCollection<Debt> debts_; //list with all debts 

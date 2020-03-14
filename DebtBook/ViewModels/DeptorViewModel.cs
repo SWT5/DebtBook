@@ -15,13 +15,14 @@ namespace DebtBook
     {
 
         public DeptorViewModel()
-        { }
+        {
+        }
 
         public DeptorViewModel(string title, Debtor debtor)
         {
             Debts = new ObservableCollection<Debt>();
             Title = title;
-            CurrentDebtor = debtor; 
+            CurrentDebtor = debtor;
         }
 
         #region properties
@@ -32,11 +33,7 @@ namespace DebtBook
         public string Title
         {
             get { return title_; }
-            set
-            {
-                SetProperty(ref title_, value); 
-
-            }
+            set { SetProperty(ref title_, value); }
         }
 
         private Debtor currentDebtor_;
@@ -52,35 +49,12 @@ namespace DebtBook
         public ObservableCollection<Debt> Debts
         {
             get { return debts_; }
-            set
-            {
-                SetProperty(ref debts_, value);
-            }
+            set { SetProperty(ref debts_, value); }
         }
 
         #endregion
 
 
-        private ICommand addDebtCommand_;
 
-        public ICommand AddDebtCommand
-        {
-            get
-            {
-                return addDebtCommand_ ?? (addDebtCommand_ = new DelegateCommand() => )
-            }
-        }
-        return add_debtor_Command_ ?? (add_debtor_Command_ = new DelegateCommand(() =>
-        {
-            var tempAddDebtor = new Debtor();
-            var vm = new AddDebtorViewModel();
-            var dlg = new AddDeptorWindow();
-            dlg.DataContext = vm;
-            if (dlg.ShowDialog()==true)
-            {
-                debtors_.Add(tempAddDebtor);
-                CurrentDebtor = tempAddDebtor;
-                CurrentIndex = 0;
-            }
     }
 }

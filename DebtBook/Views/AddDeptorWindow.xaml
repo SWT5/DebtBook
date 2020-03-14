@@ -28,27 +28,29 @@
                  VerticalAlignment="Center"
                  HorizontalAlignment="Left"
                  MinWidth="150"
-                 Text="{Binding Path=CurrentCeptor.Name}"
+                 Text="{Binding Path=CurrentDebtor.Name}"
                  TabIndex="1"
                  />
         <TextBox Grid.Column="1"
                  Grid.Row="1"
                  Name="tbxAmount"
-                 Text="{Binding Path=CurrentDeptor.Amount}"
+                 Text="{Binding Path=CurrentDebtor.Amount}"
                  TabIndex="2" 
                  TextChanged="tbxAmount_TextChanged"
                  />
         <WrapPanel Grid.Column="1" 
                    Grid.Row="2"
                    HorizontalAlignment="Center">
+          
             <Button IsDefault="True" 
                     TabIndex="3" 
                     MinWidth="75"
                     Name="btnSave"
                     Click="BtnSave_Click"
-                    Command="{Binding Path=SaveBtnCommand}"
+            
                     Content="_Save"
-                    Margin="5" />
+                    Margin="5" 
+                    />
             <Button Grid.Column="1"
                     Grid.Row="2"
                     IsCancel="True"
