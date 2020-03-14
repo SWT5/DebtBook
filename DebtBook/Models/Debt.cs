@@ -9,7 +9,7 @@ namespace DebtBook.Models
 {
     public class Debt : BindableBase
     {
-        public int amount_ { get; set; }
+        public int amount_;
         public DateTime date_;
 
         public DateTime Date
@@ -17,7 +17,14 @@ namespace DebtBook.Models
             get { return date_.Date; }
             set { SetProperty(ref date_, value); }
         }
-        
+
+        public int Amount
+        {
+            get { return amount_;}
+            set { SetProperty(ref amount_, value); }
+        } 
+
+
 
 
         /*Clock clock = new Clock();

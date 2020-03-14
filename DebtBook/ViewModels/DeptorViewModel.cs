@@ -57,15 +57,23 @@ namespace DebtBook
             }
         }
 
+        public Debt debt;
+        public void Add_debt()
+        {
+            debt = new Debt();
+            debts_.Add(debt);
+        }
+
+
         #endregion
 
 
-        private ICommand addDebtCommand;
+        //private ICommand addDebtCommand;
 
-        public ICommand AddDebtCommand
-        {
+        //public ICommand AddDebtCommand
+        //{
 
-        }
+        //}
 
     }
 }

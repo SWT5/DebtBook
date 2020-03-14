@@ -7,6 +7,9 @@
         xmlns:debtBook="clr-namespace:DebtBook"
         mc:Ignorable="d"
         Title="DebtorView" Height="400" Width="500">
+        <Window.DataContext>
+            <debtBook:DeptorViewModel/>
+        </Window.DataContext>
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="2*"/>
@@ -16,11 +19,12 @@
             <RowDefinition Height="10*"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
-        <DataGrid Grid.Column="0"
-                  Grid.Row="0" 
-                  Margin="5,5"
-                  ItemsSource="{Binding Path=Debts}"
-                  >
+        <DataGrid ItemsSource="{Binding Path=CurrentDebtor.Debts}" AutoGenerateColumns="False">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Debt amount" Binding="{Binding Amount}"/>
+                <DataGridTextColumn Header="Timestamp" Binding="{Binding Date}"/>
+            </DataGrid.Columns>
+
         </DataGrid>
         <Button Grid.Column="0"
             Grid.Row="1"
@@ -42,13 +46,14 @@
                 VerticalAlignment="Center"
                 HorizontalAlignment="Center"
                 MinWidth="120"
-                Text="{Binding Path=CurrentDeptor.Value}"/>
+                Text="{Binding Path=CurrentDebtor}"/>
             <Button Margin="5,5"
                     VerticalAlignment="Center"
                     HorizontalAlignment="Center"
                     Width="75"
-                    Content="_Add Dept"
-                    Name="btnAddDept"></Button>
+                    Content="_Add Debt"
+                    Name="btnAddDept"
+                    Command="{Binding Path=AddDebtBtnCommand}"></Button>
         </StackPanel>
         <TextBlock Grid.Column="1"
                    Grid.Row="1"
