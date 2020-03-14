@@ -6,6 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
 using DebtBook.Models;
+using Prism.Commands;
 using Prism.Mvvm;
 
 namespace DebtBook
@@ -60,12 +61,26 @@ namespace DebtBook
         #endregion
 
 
-        private ICommand addDebtCommand;
+        private ICommand addDebtCommand_;
 
         public ICommand AddDebtCommand
         {
-
+            get
+            {
+                return addDebtCommand_ ?? (addDebtCommand_ = new DelegateCommand() => )
+            }
         }
-
+        return add_debtor_Command_ ?? (add_debtor_Command_ = new DelegateCommand(() =>
+        {
+            var tempAddDebtor = new Debtor();
+            var vm = new AddDebtorViewModel();
+            var dlg = new AddDeptorWindow();
+            dlg.DataContext = vm;
+            if (dlg.ShowDialog()==true)
+            {
+                debtors_.Add(tempAddDebtor);
+                CurrentDebtor = tempAddDebtor;
+                CurrentIndex = 0;
+            }
     }
 }
