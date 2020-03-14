@@ -114,7 +114,7 @@ namespace DebtBook
                 {
                     var tempAddDebtor = new Debtor();
                     var vm = new AddDebtorViewModel();
-                    var dlg = new DeptorView();
+                    var dlg = new AddDeptorWindow();
                     dlg.DataContext = vm;
                     if (dlg.ShowDialog()==true)
                     {
@@ -126,6 +126,7 @@ namespace DebtBook
                 }));
             }
         }
+
 
 
         #endregion
