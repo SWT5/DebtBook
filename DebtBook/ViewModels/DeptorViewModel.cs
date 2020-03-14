@@ -21,7 +21,7 @@ namespace DebtBook
         public DeptorViewModel(string title, Debtor debtor)
         {
             Debts = new ObservableCollection<Debt>();
-            Title = title;
+            Title = title + ": " + debtor.Name;
             CurrentDebtor = debtor; 
         }
 

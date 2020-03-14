@@ -6,7 +6,9 @@
         xmlns:local="clr-namespace:DebtBook.Views"
         xmlns:debtBook="clr-namespace:DebtBook"
         mc:Ignorable="d"
-        Title="DebtorView" Height="400" Width="500">
+        Title="{Binding Path=Title}"
+        FocusManager.FocusedElement="{Binding ElementName=tbxValue}"
+        Height="400" Width="500">
         <Window.DataContext>
             <debtBook:DeptorViewModel/>
         </Window.DataContext>
