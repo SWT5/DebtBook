@@ -48,7 +48,9 @@
                     HorizontalAlignment="Center"
                     Width="75"
                     Content="_Add Dept"
-                    Name="btnAddDept"></Button>
+                    Name="AddDeptBtn"
+                    Command="{Binding Path=AddDebtBtnCommand}"
+                    />
         </StackPanel>
         <TextBlock Grid.Column="1"
                    Grid.Row="1"

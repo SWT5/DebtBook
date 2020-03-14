@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
+using System.Security.RightsManagement;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
@@ -25,7 +26,6 @@ namespace DebtBook
         }
 
         #region properties
-
 
         private string title_;
 
@@ -58,29 +58,49 @@ namespace DebtBook
             }
         }
 
-        #endregion
-
-
-        private ICommand addDebtCommand_;
-
-        public ICommand AddDebtCommand
+        public bool IsValid
         {
             get
             {
-                return addDebtCommand_ ?? (addDebtCommand_ = new DelegateCommand() => )
+                bool isValid = true; 
+                if(string.IsNullOrWhiteSpace((CurrentDebtor.Debts.ToString())))
+                    isValid = false;
+                return isValid; 
             }
         }
-        return add_debtor_Command_ ?? (add_debtor_Command_ = new DelegateCommand(() =>
+
+        #endregion
+
+
+        #region commands
+
+        private ICommand addDebtBtnCommand_;
+
+        public ICommand AddDebtBtnCommand
         {
-            var tempAddDebtor = new Debtor();
-            var vm = new AddDebtorViewModel();
-            var dlg = new AddDeptorWindow();
-            dlg.DataContext = vm;
-            if (dlg.ShowDialog()==true)
+            get
             {
-                debtors_.Add(tempAddDebtor);
-                CurrentDebtor = tempAddDebtor;
-                CurrentIndex = 0;
+                return addDebtBtnCommand_ ?? (addDebtBtnCommand_ = new DelegateCommand(
+                        AddDebtBtnCommand_Execute, AddDebtBtnCommand_CanExecute)
+                    .ObservesProperty(() => CurrentDebtor.Debts)); 
             }
+        }
+
+        private void AddDebtBtnCommand_Execute()
+        {
+        }
+
+        private bool AddDebtBtnCommand_CanExecute()
+        {
+            return IsValid;
+        }
+
+
+
+        #endregion
+
+
+
+
     }
 }
