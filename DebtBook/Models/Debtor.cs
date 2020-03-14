@@ -55,12 +55,18 @@ namespace DebtBook.Models
             get { return totalDebt_; }
             set
             {
-                totalDebt_ = 0;
                 foreach (var debt in Debts)
                 {
                     totalDebt_ += debt.amount_;
                 }
             }
+        }
+
+        private Debt debt;
+        public void Add_debt()
+        {
+            debt = new Debt();
+            debts_.Add(debt);
         }
 
     }
