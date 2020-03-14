@@ -59,13 +59,13 @@ namespace DebtBook
 
         #endregion
 
-
+        /*
         private ICommand addDebtCommand;
 
         public ICommand AddDebtCommand
         {
 
-        }
+        }*/
 
     }
 }
