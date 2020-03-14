@@ -23,14 +23,10 @@
        <Label Margin="5,0"
               Grid.Column="0">Debtors</Label>
         <DataGrid ItemsSource="{Binding Debtors}" AutoGenerateColumns="False">
-
             <DataGrid.Columns>
-
                 <DataGridTextColumn Header="Name" Binding="{Binding Name}"/>
                 <DataGridTextColumn Header="Total debt" Binding="{Binding TotalDebt}"/>
             </DataGrid.Columns>
-
-
             <i:Interaction.Triggers>
                         <i:EventTrigger EventName="MouseDoubleClick">
                             <prism:InvokeCommandAction Command="{Binding EditDebtorCommand}"/>
@@ -47,6 +43,5 @@
                 Add Debtor
             </Button>
         </StackPanel>
-
     </Grid>
 </Window>
