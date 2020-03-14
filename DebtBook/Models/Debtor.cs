@@ -61,14 +61,28 @@ namespace DebtBook.Models
                 return totalDebt_;
             }
             set { SetProperty(ref totalDebt_, value); }
+            //set { totalDebt_ += value; }
         }
 
-        //public Debt debt;
-        //public void Add_debt()
-        //{
-        //    debt = new Debt();
-        //    debts_.Add(debt);
-        //}
+
+        private int debtAdd;
+        public int DebtAdd
+        {
+            get { return debtAdd; }
+            set
+            {
+                SetProperty(ref debtAdd, value);
+                //Add_debt(debtAdd);
+            }
+        }
+
+        public Debt debt;
+        public void Add_debt(int debt_)
+        {
+            debt = new Debt();
+            debt.Amount = debt_;
+            debts_.Add(debt);
+        }
 
     }
 }
