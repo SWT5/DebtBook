@@ -9,6 +9,10 @@ namespace DebtBook.Models
 {
     public class Debt : BindableBase
     {
+        public Debt()
+        {
+            date_ = DateTime.Now;
+        }
         public int amount_;
         public DateTime date_;
 
