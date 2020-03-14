@@ -33,7 +33,7 @@
                   CanUserDeleteRows="False"
                   IsReadOnly="True"
                   MinRowHeight="12"
-                  Name="dbDebtors"
+                  Name="dbDebtors" SelectionChanged="dbDebtors_SelectionChanged"
                   >
             <i:Interaction.Triggers>
                 <i:EventTrigger EventName="MouseDoubleClick">
@@ -46,7 +46,9 @@
                     HorizontalAlignment="Center"
                     VerticalAlignment="Top"
                     Margin="5,5">
-            <Button Margin="5,5" Command="{Binding Path=Add_Debtor_Command}">Add Detor</Button>
+            <Button Margin="5,5" 
+                    Command="{Binding Path=Add_Debtor_Command}"
+                    >Add New Debtor</Button>
         </StackPanel>
 
     </Grid>
