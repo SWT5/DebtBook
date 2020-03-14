@@ -55,9 +55,9 @@ namespace DebtBook
             set { SetProperty(ref currentIndex_, value); }
         }
 
-        ObservableCollection<int> debts_;
+        ObservableCollection<Debt> debts_;
 
-        public ObservableCollection<int> Debts
+        public ObservableCollection<Debt> Debts
         {
             get { return debts_; }
             set
@@ -113,7 +113,16 @@ namespace DebtBook
                 return add_debtor_Command_ ?? (add_debtor_Command_ = new DelegateCommand(() =>
                 {
                     var tempAddDebtor = new Debtor();
-                    debtors_.Add(tempAddDebtor);
+                    var vm = new AddDebtorViewModel();
+                    var dlg = new DeptorView();
+                    dlg.DataContext = vm;
+                    if (dlg.ShowDialog()==true)
+                    {
+                        debtors_.Add(tempAddDebtor);
+                        CurrentDebtor = tempAddDebtor;
+                        CurrentIndex = 0;
+                    }
+                    
                 }));
             }
         }
