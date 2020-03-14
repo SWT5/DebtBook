@@ -29,8 +29,6 @@
                 <DataGridTextColumn Header="Name" Binding="{Binding Name}"/>
                 <DataGridTextColumn Header="Total debt" Binding="{Binding TotalDebt}"/>
             </DataGrid.Columns>
-
-
             <i:Interaction.Triggers>
                         <i:EventTrigger EventName="MouseDoubleClick">
                             <prism:InvokeCommandAction Command="{Binding EditDebtorCommand}"/>

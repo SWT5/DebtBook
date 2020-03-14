@@ -55,9 +55,9 @@ namespace DebtBook
             set { SetProperty(ref currentIndex_, value); }
         }
 
-        ObservableCollection<int> debts_;
+        ObservableCollection<Debt> debts_;
 
-        public ObservableCollection<int> Debts
+        public ObservableCollection<Debt> Debts
         {
             get { return debts_; }
             set
