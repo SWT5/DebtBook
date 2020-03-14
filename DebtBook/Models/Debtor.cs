@@ -55,7 +55,6 @@ namespace DebtBook.Models
             get { return totalDebt_; }
             set
             {
-                //totalDebt_ = 0;
                 foreach (var debt in Debts)
                 {
                     totalDebt_ += debt.amount_;
