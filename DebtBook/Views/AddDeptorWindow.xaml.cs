@@ -32,6 +32,10 @@ namespace DebtBook.Views
 
         private void BtnSave_Click(object sender, RoutedEventArgs e)
         {
+
+            /*
+              DialogResult = true;
+             */
             var vm = DataContext as AddDebtorViewModel;
             if (vm.IsValid)
             {
@@ -41,6 +45,7 @@ namespace DebtBook.Views
             {
                 MessageBox.Show("Enter values for Name and amount", "Missing data");
             }
+            
         }
     }
 }

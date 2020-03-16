@@ -29,6 +29,10 @@ namespace DebtBook.ViewModels
         }
 
         #region properties
+
+
+
+
         Debtor currentDebtor_;
 
         public Debtor CurrentDebtor
@@ -52,7 +56,7 @@ namespace DebtBook.ViewModels
                 isValid = true;
                 if(string.IsNullOrWhiteSpace(CurrentDebtor.Name))
                     isValid = false;
-                if(string.IsNullOrWhiteSpace(CurrentDebtor.Debts[0].amount_.ToString()))  // konventere amount til string i if-statment
+                if(double.IsNaN(CurrentDebtor.Debts[0].amount_))  // konventere amount til string i if-statment
                     isValid = false;
                 return isValid;
             }
@@ -110,8 +114,8 @@ namespace DebtBook.ViewModels
             {
                 return saveBtnCommand_ ?? (saveBtnCommand_ =
                            new DelegateCommand(SaveFileCommand_Execute, SaveFileCommand_CanExecute)
-                               //.ObservesProperty(() => CurrentDebtor.Debts));
-                               .ObservesProperty(() => Debtors.Count));
+                               .ObservesProperty(() => CurrentDebtor.Name)
+                               .ObservesProperty(() => CurrentDebtor.TotalDebt));
             }
         }
 
