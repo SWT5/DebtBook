@@ -5,11 +5,11 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:DebtBook.Views"
         mc:Ignorable="d"
-        Title="Add Deptor" 
+        Title="Add Debtor" 
         Height="300" Width="500"
         WindowStartupLocation="CenterOwner"
         FocusManager.FocusedElement="{Binding ElementName=tbxName}"
-        >
+>
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="auto" />
