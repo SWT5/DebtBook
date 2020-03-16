@@ -11,6 +11,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using DebtBook.ViewModels;
 
 namespace DebtBook.Views
 {
@@ -31,7 +32,15 @@ namespace DebtBook.Views
 
         private void BtnSave_Click(object sender, RoutedEventArgs e)
         {
-            throw new NotImplementedException();
+            var vm = DataContext as AddDebtorViewModel;
+            if (vm.IsValid)
+            {
+                DialogResult = true;
+            }
+            else
+            {
+                MessageBox.Show("Enter values for Name and amount", "Missing data");
+            }
         }
     }
 }

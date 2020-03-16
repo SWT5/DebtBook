@@ -43,16 +43,22 @@ namespace DebtBook.ViewModels
             set { SetProperty(ref debtors_, value); }
         }
 
-        public bool isValid
+        private bool isValid;
+
+        public bool IsValid
         {
             get
             {
-                bool isValid = true;
+                isValid = true;
                 if(string.IsNullOrWhiteSpace(CurrentDebtor.Name))
                     isValid = false;
                 if(string.IsNullOrWhiteSpace(CurrentDebtor.Debts[0].amount_.ToString()))  // konventere amount til string i if-statment
                     isValid = false;
                 return isValid;
+            }
+            set
+            {
+                SetProperty(ref isValid, value);
             }
         }
 
