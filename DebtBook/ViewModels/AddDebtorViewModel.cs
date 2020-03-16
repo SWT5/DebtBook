@@ -63,7 +63,7 @@ namespace DebtBook.ViewModels
                 bool isValid = true;
                 if(string.IsNullOrWhiteSpace(CurrentDebtor.Name))
                     isValid = false;
-                if(double.IsNaN(CurrentDebtor.TotalDebt))  // konventere amount til string i if-statment
+                if(double.IsNaN(CurrentDebtor.TotalAmount))  // konventere amount til string i if-statment
                     isValid = false;
                 return isValid;
             }
@@ -122,7 +122,7 @@ namespace DebtBook.ViewModels
                 return saveBtnCommand_ ?? (saveBtnCommand_ =
                            new DelegateCommand(SaveFileCommand_Execute, SaveFileCommand_CanExecute)
                                .ObservesProperty(() => CurrentDebtor.Name)
-                               .ObservesProperty(() => CurrentDebtor.TotalDebt));
+                               .ObservesProperty(() => CurrentDebtor.TotalAmount));
             }
         }
 
