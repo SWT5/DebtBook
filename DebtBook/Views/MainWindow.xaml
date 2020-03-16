@@ -41,7 +41,7 @@
                 <DataGridTextColumn Header="Name" Binding="{Binding Name}">
 
                 </DataGridTextColumn>
-                <DataGridTextColumn Header="Total debt" Binding="{Binding TotalDebt}"/>
+                <DataGridTextColumn Header="Total Amount" Binding="{Binding TotalAmount}"/>
             </DataGrid.Columns>
             <i:Interaction.Triggers>
                 <i:EventTrigger EventName="MouseDoubleClick">

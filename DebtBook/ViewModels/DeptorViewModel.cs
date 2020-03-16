@@ -16,13 +16,13 @@ namespace DebtBook
     {
 
         public DeptorViewModel()
-        { }
+        {
+        }
 
         public DeptorViewModel(string title, Debtor debtor)
         {
-            Debts = new ObservableCollection<Debt>();
             Title = title + ": " + debtor.Name;
-            CurrentDebtor = debtor; 
+            CurrentDebtor = debtor;
         }
 
         #region properties
@@ -32,11 +32,7 @@ namespace DebtBook
         public string Title
         {
             get { return title_; }
-            set
-            {
-                SetProperty(ref title_, value); 
-
-            }
+            set { SetProperty(ref title_, value); }
         }
 
         private Debtor currentDebtor_;
@@ -47,43 +43,42 @@ namespace DebtBook
             set { SetProperty(ref currentDebtor_, value); }
         }
 
-        ObservableCollection<Debt> debts_;
-
-        public ObservableCollection<Debt> Debts
-        {
-            get { return debts_; }
-            set
-            {
-                SetProperty(ref debts_, value);
-            }
-        }
-
-
         #endregion
 
 
         #region commands
 
-        
+
         ICommand addDebtCommand_;
+
         public ICommand AddDebtCommand
         {
             get
             {
-                return addDebtCommand_ ?? (addDebtCommand_ = new DelegateCommand(() =>
-                           {
-                               CurrentDebtor.Add_debt(CurrentDebtor.DebtAdd);
-                           }));
+                return addDebtCommand_ ?? (addDebtCommand_ = new DelegateCommand(
+                               AddDebtCommand_Execute)
+                           .ObservesProperty(() => CurrentDebtor.Debts));
             }
         }
-
-
-
-
+        private void AddDebtCommand_Execute()
+        {
+            CurrentDebtor.addDebtToPerson(int.Parse(CurrentDebtor.DebtAdd));
+            
+        }
         #endregion
-
-
-
-
     }
 }
+
+
+   
+
+
+
+
+
+
+
+
+
+
+
