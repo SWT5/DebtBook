@@ -35,7 +35,7 @@
         <TextBox Grid.Column="1"
                  Grid.Row="1"
                  Name="tbxAmount"
-                 Text="{Binding Path=CurrentDebtor.Amount}"
+                 Text="{Binding Path=CurrentDebtor.TotalAmount}"
                  TabIndex="2" 
                  TextChanged="tbxAmount_TextChanged"
                  />

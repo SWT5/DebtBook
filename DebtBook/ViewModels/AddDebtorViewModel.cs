@@ -17,7 +17,7 @@ namespace DebtBook.ViewModels
     {
         private string filePath_ = "";
         private readonly string AppTitle = "DebtBook";
-        private ObservableCollection<Debtor> debtors_;  
+        //private ObservableCollection<Debtor> debtors_;  
         
         public AddDebtorViewModel()
         {
@@ -48,11 +48,11 @@ namespace DebtBook.ViewModels
             set { SetProperty(ref currentDebtor_, value); }
         }
 
-        public ObservableCollection<Debtor> Debtors
-        {
-            get { return debtors_; }
-            set { SetProperty(ref debtors_, value); }
-        }
+        //public ObservableCollection<Debtor> Debtors
+        //{
+        //    get { return debtors_; }
+        //    set { SetProperty(ref debtors_, value); }
+        //}
 
         //private bool isValid;
 
@@ -61,10 +61,13 @@ namespace DebtBook.ViewModels
             get
             {
                 bool isValid = true;
-                if(string.IsNullOrWhiteSpace(CurrentDebtor.Name))
-                    isValid = false;
-                if(double.IsNaN(CurrentDebtor.TotalAmount))  // konventere amount til string i if-statment
-                    isValid = false;
+                if (CurrentDebtor != null)
+                {
+                    if (string.IsNullOrWhiteSpace(CurrentDebtor.Name))
+                        isValid = false;
+                    if (double.IsNaN(CurrentDebtor.TotalAmount))  // konventere amount til string i if-statment
+                        isValid = false;
+                }
                 return isValid;
             }
             //set

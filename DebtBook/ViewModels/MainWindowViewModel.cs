@@ -28,8 +28,7 @@ namespace DebtBook
                 new Debtor("Jens", 200)
                 #endif
             };
-            CurrentDebtor = null; 
-        }
+            CurrentDebtor = null;}
 
         #region properties
 
@@ -91,15 +90,16 @@ namespace DebtBook
                 return add_debtor_Command_ ?? (add_debtor_Command_ = new DelegateCommand(() =>
                 {
                     var tempAddDebtor = new Debtor();
-                    var vm = new AddDebtorViewModel();
+                    var vm = new AddDebtorViewModel(tempAddDebtor);
                     var dlg = new AddDeptorWindow();
                     dlg.DataContext = vm;
                     if (dlg.ShowDialog()==true)
                     {
-                        debtors_.Add(tempAddDebtor);
-                        CurrentDebtor = tempAddDebtor;
-                        CurrentIndex = 0;
+                       
+                        //CurrentIndex = 0;
                     }
+                     debtors_.Add(tempAddDebtor);
+                     CurrentDebtor = tempAddDebtor;
                     
                 }));
             }
