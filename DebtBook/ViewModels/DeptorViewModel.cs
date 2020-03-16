@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
+using System.Security.RightsManagement;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
@@ -27,7 +28,6 @@ namespace DebtBook
 
         #region properties
 
-
         private string title_;
 
         public string Title
@@ -52,7 +52,47 @@ namespace DebtBook
             set { SetProperty(ref debts_, value); }
         }
 
+        public bool IsValid
+        {
+            get
+            {
+                bool isValid = true; 
+                if(string.IsNullOrWhiteSpace((CurrentDebtor.Debts.ToString())))
+                    isValid = false;
+                return isValid; 
+            }
+        }
+
         #endregion
+
+
+        #region commands
+
+        private ICommand addDebtBtnCommand_;
+
+        public ICommand AddDebtBtnCommand
+        {
+            get
+            {
+                return addDebtBtnCommand_ ?? (addDebtBtnCommand_ = new DelegateCommand(
+                        AddDebtBtnCommand_Execute, AddDebtBtnCommand_CanExecute)
+                    .ObservesProperty(() => CurrentDebtor.Debts)); 
+            }
+        }
+
+        private void AddDebtBtnCommand_Execute()
+        {
+        }
+
+        private bool AddDebtBtnCommand_CanExecute()
+        {
+            return IsValid;
+        }
+
+
+
+        #endregion
+
 
 
 
