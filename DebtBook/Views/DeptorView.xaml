@@ -9,9 +9,6 @@
         Title="{Binding Path=Title}"
         FocusManager.FocusedElement="{Binding ElementName=tbxValue}"
         Height="400" Width="500">
-        <!--<Window.DataContext>
-            <debtBook:DeptorViewModel/>
-        </Window.DataContext>-->
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="2*"/>
@@ -41,18 +38,16 @@
                 HorizontalAlignment="Center"
                 MinWidth="120"
                 Text="{Binding Path=CurrentDebtor.DebtAdd}"/>
-            <Button Margin="5,5"
-                    VerticalAlignment="Center"
-                    HorizontalAlignment="Center"
-                    Width="75"
-                    Content="_Add Debt"
-                    Name="btnAddDept"
-                    Command="{Binding Path=AddDebtCommand}"></Button>
+            <Button 
+                Margin="5,5"
+                VerticalAlignment="Center"
+                HorizontalAlignment="Center"
+                Width="75"
+                Content="_Add Debt"
+                Name="btnAddDept"
+                Command="{Binding Path=AddDebtCommand}"
+                Style="{StaticResource ResourceKey=ButtonStyle}"
+                />
         </StackPanel>
-        <TextBlock Grid.Column="1"
-                   Grid.Row="1"
-                   Margin="4,0" 
-                   Name="tblkDate" 
-                   Text="{Binding Path=Clock.Date}" />
     </Grid>
 </Window>

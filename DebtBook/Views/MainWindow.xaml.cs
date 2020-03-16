@@ -25,9 +25,5 @@ namespace DebtBook
             InitializeComponent();
         }
 
-        private void dbDebtors_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-
-        }
     }
 }

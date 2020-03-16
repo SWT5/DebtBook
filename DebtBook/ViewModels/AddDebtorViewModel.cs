@@ -17,8 +17,7 @@ namespace DebtBook.ViewModels
     {
         private string filePath_ = "";
         private readonly string AppTitle = "DebtBook";
-        //private ObservableCollection<Debtor> debtors_;  
-        
+
         public AddDebtorViewModel()
         {
         }
@@ -42,14 +41,6 @@ namespace DebtBook.ViewModels
             set { SetProperty(ref currentDebtor_, value); }
         }
 
-        //public ObservableCollection<Debtor> Debtors
-        //{
-        //    get { return debtors_; }
-        //    set { SetProperty(ref debtors_, value); }
-        //}
-
-        //private bool isValid;
-
         public bool IsValid
         {
             get
@@ -64,10 +55,6 @@ namespace DebtBook.ViewModels
                 }
                 return isValid;
             }
-            //set
-            //{
-            //    SetProperty(ref isValid, value);
-            //}
         }
 
 
@@ -132,7 +119,6 @@ namespace DebtBook.ViewModels
         private bool SaveFileCommand_CanExecute()
         {
             return IsValid;
-                //(filename_ != "") && (Debtors.Count > 0);
         }
 
 

@@ -50,7 +50,8 @@
                     Click="BtnSave_Click"
                     Command="{Binding Path=SaveBtnCommand}"
                     Content="_Save"
-                    Margin="5" 
+                    Margin="5"
+                    Style="{StaticResource ResourceKey=ButtonStyle}"
                     />
             
         </WrapPanel>
