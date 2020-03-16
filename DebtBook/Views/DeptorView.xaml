@@ -24,7 +24,7 @@
         <DataGrid ItemsSource="{Binding Path=CurrentDebtor.Debts}" AutoGenerateColumns="False">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Debt amount" Binding="{Binding Amount}"/>
-                <DataGridTextColumn Header="Timestamp" Binding="{Binding Date}"/>
+                <DataGridTextColumn Header="Date" Binding="{Binding Date}"/>
             </DataGrid.Columns>
 
         </DataGrid>

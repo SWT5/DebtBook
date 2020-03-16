@@ -11,14 +11,14 @@ namespace DebtBook.Models
     {
         public Debt()
         {
-            date_ = DateTime.Now;
+            date_ = DateTime.Now.ToString("dd/MM/yyy");
         }
         public int amount_;
-        public DateTime date_;
+        public string date_;
 
-        public DateTime Date
+        public string Date
         {
-            get { return date_.Date; }
+            get { return date_; } //.Date;
             set { SetProperty(ref date_, value); }
         }
 
