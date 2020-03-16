@@ -11,6 +11,11 @@ namespace DebtBook.Models
     {
         public Debt()
         {
+
+        }
+        public Debt(int amount)
+        {
+            amount_ = amount;
             date_ = DateTime.Now.ToString("dd/MM/yyy");
         }
         public int amount_;
@@ -26,14 +31,6 @@ namespace DebtBook.Models
         {
             get { return amount_;}
             set { SetProperty(ref amount_, value); }
-        } 
-
-
-
-
-        /*Clock clock = new Clock();
-        public Clock Clock_ { get => clock; set => clock = value; }*/
-
-        
+        }
     }
 }

@@ -55,18 +55,6 @@ namespace DebtBook
             set { SetProperty(ref currentIndex_, value); }
         }
 
-        ObservableCollection<Debt> debts_;
-
-        public ObservableCollection<Debt> Debts
-        {
-            get { return debts_; }
-            set
-            {
-                SetProperty(ref debts_, value);
-            }
-        }
-
-        
 
         #endregion
 
@@ -80,23 +68,11 @@ namespace DebtBook
             {
                 return editCommand_ ?? (editCommand_ = new DelegateCommand(() =>
                 {
-                    var tempDebtor = CurrentDebtor.Clone();
-                    var vm = new DeptorViewModel("Edit Debtor", tempDebtor)
-                    {
-                        Debts = debts_
-                    };
-                    var dlg = new DeptorView()
-                    {
-                        DataContext = vm,
-                        Owner = App.Current.MainWindow
-                    };
-                    if (dlg.ShowDialog() == true)
-                    {
-                        // Copy values back
-                        CurrentDebtor.Name = tempDebtor.Name;
-                        CurrentDebtor.Debts = tempDebtor.Debts;
-                        //Dirty = true;
-                    }
+                    var vm = new DeptorViewModel("Edit Debtor", CurrentDebtor) { };
+                    var dlg = new DeptorView(){ };
+                    dlg.DataContext = vm;
+                    dlg.ShowDialog();
+
                 },
                 () =>
                 {

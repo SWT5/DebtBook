@@ -28,15 +28,7 @@
             </DataGrid.Columns>
 
         </DataGrid>
-        <Button Grid.Column="0"
-            Grid.Row="1"
-            Margin="5,5"
-            VerticalAlignment="Center"
-            HorizontalAlignment="Center"
-            Width="75"
-            Content="_Close"
-            Name="btnClose"
-        />
+        
         <StackPanel Grid.Column="1"
                     Margin="5,5">
             <Label Margin="5,0">

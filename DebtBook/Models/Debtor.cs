@@ -16,6 +16,7 @@ namespace DebtBook.Models
         private string name_;
         private int totalDebt_;
         private Debt debt_ = new Debt();
+        
 
         public Debtor()
         {}
@@ -24,16 +25,11 @@ namespace DebtBook.Models
         {
             debts_ = new ObservableCollection<Debt>();
             name_ = name;
-            debt_.amount_ = debt;
-            debts_.Add(debt_);
+            TotalAmount = debt;
+            debts_.Add(new Debt(debt));
             
             // ekstra parameter i construoter som smider den gæld ind på næste ledige plads i listen af gæld
             // kald funktion til at indsætte
-        }
-
-        public Debtor Clone()
-        {
-            return this.MemberwiseClone() as Debtor;
         }
 
         public string Name
@@ -55,40 +51,30 @@ namespace DebtBook.Models
             get { return debts_; }
             set { SetProperty(ref debts_, value); }
         }
-
-        public int TotalDebt
+        private double totalamount = 0;
+        public double TotalAmount
         {
-            get
-            {
-                foreach (var debt in Debts)
-                {
-                    totalDebt_ += debt.amount_;
-                }
-                return totalDebt_;
-            }
-            set { SetProperty(ref totalDebt_, value); }
-            //set { totalDebt_ += value; }
+            get { return totalamount; }
+            set { SetProperty(ref totalamount, value); }
         }
 
 
-        private int debtAdd;
-        public int DebtAdd
+        public void addDebtToPerson(int amount)
+        {
+            debts_.Add(new Debt(amount));
+            TotalAmount += amount;
+        }
+
+        private string debtAdd;
+        public string DebtAdd
         {
             get { return debtAdd; }
             set
             {
                 SetProperty(ref debtAdd, value);
-                //Add_debt(debtAdd);
+               
             }
         }
-
-        public Debt debt;
-        public void Add_debt(int debt_)
-        {
-            debt = new Debt();
-            debt.Amount = debt_;
-            debts_.Add(debt);
-        }
-
     }
 }
+
