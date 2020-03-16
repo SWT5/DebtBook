@@ -28,8 +28,6 @@ namespace DebtBook.Models
             TotalAmount = debt;
             debts_.Add(new Debt(debt));
             
-            // ekstra parameter i construoter som smider den gæld ind på næste ledige plads i listen af gæld
-            // kald funktion til at indsætte
         }
       
         public string Name

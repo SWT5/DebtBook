@@ -35,7 +35,7 @@
                   CanUserDeleteRows="False"
                   IsReadOnly="True"
                   MinRowHeight="12"
-                  Name="dbDebtors">
+                  Name="dbDebtors" SelectionChanged="dbDebtors_SelectionChanged">
             <DataGrid.Columns>
 
                 <DataGridTextColumn Header="Name" Binding="{Binding Name}">
