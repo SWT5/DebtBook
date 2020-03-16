@@ -10,7 +10,7 @@
         WindowStartupLocation="CenterOwner"
         ShowInTaskbar="False"
         FocusManager.FocusedElement="{Binding ElementName=tbxName}"
-        >
+>
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="auto" />

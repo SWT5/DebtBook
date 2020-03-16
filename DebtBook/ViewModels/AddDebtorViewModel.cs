@@ -18,14 +18,21 @@ namespace DebtBook.ViewModels
         private string filePath_ = "";
         private readonly string AppTitle = "DebtBook";
         private ObservableCollection<Debtor> debtors_;  
+        
         public AddDebtorViewModel()
         {
-            CurrentDebtor = null; 
+            //CurrentDebtor = null; 
 
-            debtors_ = new ObservableCollection<Debtor>()
-            {
-                new Debtor("mads", 100)  // her evt. smid gæld i
-            };
+            //debtors_ = new ObservableCollection<Debtor>()
+            //{
+            //    new Debtor("mads", 100)  // her evt. smid gæld i
+            //};
+        }
+
+
+        public AddDebtorViewModel(Debtor debtor)
+        {
+            CurrentDebtor = debtor;
         }
 
         #region properties
@@ -47,23 +54,23 @@ namespace DebtBook.ViewModels
             set { SetProperty(ref debtors_, value); }
         }
 
-        private bool isValid;
+        //private bool isValid;
 
         public bool IsValid
         {
             get
             {
-                isValid = true;
+                bool isValid = true;
                 if(string.IsNullOrWhiteSpace(CurrentDebtor.Name))
                     isValid = false;
                 if(double.IsNaN(CurrentDebtor.Debts[0].amount_))  // konventere amount til string i if-statment
                     isValid = false;
                 return isValid;
             }
-            set
-            {
-                SetProperty(ref isValid, value);
-            }
+            //set
+            //{
+            //    SetProperty(ref isValid, value);
+            //}
         }
 
 
