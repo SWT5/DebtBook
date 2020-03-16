@@ -95,12 +95,9 @@ namespace DebtBook
                     dlg.DataContext = vm;
                     if (dlg.ShowDialog()==true)
                     {
-                       
-                        //CurrentIndex = 0;
                     }
                      debtors_.Add(tempAddDebtor);
                      CurrentDebtor = tempAddDebtor;
-                    
                 }));
             }
         }

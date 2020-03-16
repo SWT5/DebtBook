@@ -9,9 +9,9 @@
         Title="{Binding Path=Title}"
         FocusManager.FocusedElement="{Binding ElementName=tbxValue}"
         Height="400" Width="500">
-        <Window.DataContext>
+        <!--<Window.DataContext>
             <debtBook:DeptorViewModel/>
-        </Window.DataContext>
+        </Window.DataContext>-->
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="2*"/>

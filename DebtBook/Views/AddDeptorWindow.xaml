@@ -35,7 +35,7 @@
         <TextBox Grid.Column="1"
                  Grid.Row="1"
                  Name="tbxAmount"
-                 Text="{Binding Path=CurrentDebtor.TotalAmount}"
+                 Text="{Binding Path=CurrentDebtor.DebtAdd}"
                  TabIndex="2" 
                  TextChanged="tbxAmount_TextChanged"
                  />
@@ -48,19 +48,11 @@
                     MinWidth="75"
                     Name="btnSave"
                     Click="BtnSave_Click"
-                    Command="{Binding Path=SaveCommand}"
+                    Command="{Binding Path=SaveBtnCommand}"
                     Content="_Save"
                     Margin="5" 
                     />
-            <Button Grid.Column="1"
-                    Grid.Row="2"
-                    IsCancel="True"
-                    TabIndex="4"
-                    MinWidth="75"
-                    Name="btnCancel"
-                    Content="_Cancel"
-                    Margin="5" 
-                    />
+            
         </WrapPanel>
     </Grid>
 </Window>

@@ -16,10 +16,12 @@ namespace DebtBook.Models
         private string name_;
         private int totalDebt_;
         private Debt debt_ = new Debt();
-        
+
 
         public Debtor()
-        {}
+        {
+            debts_ = new ObservableCollection<Debt>();
+        }
 
         public Debtor(string name, int debt)    // skal muligvis være af type Debt
         {

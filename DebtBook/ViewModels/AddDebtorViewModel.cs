@@ -21,12 +21,6 @@ namespace DebtBook.ViewModels
         
         public AddDebtorViewModel()
         {
-            //CurrentDebtor = null; 
-
-            //debtors_ = new ObservableCollection<Debtor>()
-            //{
-            //    new Debtor("mads", 100)  // her evt. smid gæld i
-            //};
         }
 
 
@@ -125,14 +119,14 @@ namespace DebtBook.ViewModels
                 return saveBtnCommand_ ?? (saveBtnCommand_ =
                            new DelegateCommand(SaveFileCommand_Execute, SaveFileCommand_CanExecute)
                                .ObservesProperty(() => CurrentDebtor.Name)
-                               .ObservesProperty(() => CurrentDebtor.TotalAmount));
+                               .ObservesProperty(() => CurrentDebtor.Debts));
             }
         }
 
 
         private void SaveFileCommand_Execute()
         {
-            //SaveFile();
+            CurrentDebtor.addDebtToPerson(int.Parse(CurrentDebtor.DebtAdd));
         }
 
         private bool SaveFileCommand_CanExecute()
@@ -141,22 +135,6 @@ namespace DebtBook.ViewModels
                 //(filename_ != "") && (Debtors.Count > 0);
         }
 
-        //private void SaveFile()
-        //{
-        //    try
-        //    {
-        //        Repository.SaveFile(filePath_, Debtors);
-        //        Dirty = false;
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        MessageBox.Show(ex.Message, "Unable to save file", MessageBoxButton.OK, MessageBoxImage.Error);
-        //    }
-        //}
-
-     
-
-        // cancelbtn 
 
         #endregion
 
