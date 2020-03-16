@@ -63,7 +63,7 @@ namespace DebtBook.ViewModels
                 bool isValid = true;
                 if(string.IsNullOrWhiteSpace(CurrentDebtor.Name))
                     isValid = false;
-                if(double.IsNaN(CurrentDebtor.Debts[0].amount_))  // konventere amount til string i if-statment
+                if(double.IsNaN(CurrentDebtor.TotalAmount))  // konventere amount til string i if-statment
                     isValid = false;
                 return isValid;
             }
@@ -122,33 +122,34 @@ namespace DebtBook.ViewModels
                 return saveBtnCommand_ ?? (saveBtnCommand_ =
                            new DelegateCommand(SaveFileCommand_Execute, SaveFileCommand_CanExecute)
                                .ObservesProperty(() => CurrentDebtor.Name)
-                               .ObservesProperty(() => CurrentDebtor.TotalDebt));
+                               .ObservesProperty(() => CurrentDebtor.TotalAmount));
             }
         }
 
 
         private void SaveFileCommand_Execute()
         {
-            SaveFile();
+            //SaveFile();
         }
 
         private bool SaveFileCommand_CanExecute()
         {
-            return (filename_ != "") && (Debtors.Count > 0);
+            return IsValid;
+                //(filename_ != "") && (Debtors.Count > 0);
         }
 
-        private void SaveFile()
-        {
-            try
-            {
-                Repository.SaveFile(filePath_, Debtors);
-                Dirty = false;
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message, "Unable to save file", MessageBoxButton.OK, MessageBoxImage.Error);
-            }
-        }
+        //private void SaveFile()
+        //{
+        //    try
+        //    {
+        //        Repository.SaveFile(filePath_, Debtors);
+        //        Dirty = false;
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        MessageBox.Show(ex.Message, "Unable to save file", MessageBoxButton.OK, MessageBoxImage.Error);
+        //    }
+        //}
 
      
 
