@@ -73,7 +73,6 @@
     </ApplicationDefinition>
     <Compile Include="Data\Repository.cs" />
     <Compile Include="Models\Debt.cs" />
-    <Compile Include="Utilities\Clock.cs" />
     <Page Include="Views\AddDeptorWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -91,6 +90,7 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Models\Debtor.cs" />
+    <Compile Include="Utilities\DebtorValueColorConverter.cs" />
     <Compile Include="ViewModels\AddDebtorViewModel.cs" />
     <Compile Include="ViewModels\DeptorViewModel.cs" />
     <Compile Include="ViewModels\MainWindowViewModel.cs" />
