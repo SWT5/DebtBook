@@ -14,8 +14,8 @@
                 <Setter Property="Background" Value="HotPink"/>
                 <Setter Property="FontStyle" Value="Normal"/>
                 <Setter Property="FontWeight" Value="DemiBold"/>
-                <Setter Property="FontSize" Value="15"/>
-                <Setter Property="FontFamily" Value="Copperplate Gothic Light"/>
+                <Setter Property="FontSize" Value="12"/>
+                <Setter Property="FontFamily" Value="Comic Sans MS"/>
             </Style.Setters>
             <Style.Triggers>
                 <Trigger Property="Button.IsMouseOver" Value="True">
