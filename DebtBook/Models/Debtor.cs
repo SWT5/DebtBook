@@ -31,7 +31,7 @@ namespace DebtBook.Models
             // ekstra parameter i construoter som smider den gæld ind på næste ledige plads i listen af gæld
             // kald funktion til at indsætte
         }
-
+      
         public string Name
         {
             get

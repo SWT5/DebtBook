@@ -122,7 +122,7 @@ namespace DebtBook.ViewModels
                 return saveBtnCommand_ ?? (saveBtnCommand_ =
                            new DelegateCommand(SaveFileCommand_Execute, SaveFileCommand_CanExecute)
                                .ObservesProperty(() => CurrentDebtor.Name)
-                               .ObservesProperty(() => CurrentDebtor.TotalDebt));
+                               .ObservesProperty(() => CurrentDebtor.TotalAmount));
             }
         }
 
