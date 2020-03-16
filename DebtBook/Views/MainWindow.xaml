@@ -25,23 +25,27 @@
         <DataGrid
             AutoGenerateColumns="False"
             Grid.Column="0"
-                  Grid.Row="1"
-                    ItemsSource="{Binding Path=Debtors}"
-                  SelectedItem="{Binding Path=CurrentDebtor}"
-                  SelectedIndex="{Binding Path=CurrentIndex}"
-                  IsSynchronizedWithCurrentItem="True"
-                  Margin="5,0,5,10"
-                  CanUserAddRows="False"
-                  CanUserDeleteRows="False"
-                  IsReadOnly="True"
-                  MinRowHeight="12"
-                  Name="dbDebtors" SelectionChanged="dbDebtors_SelectionChanged">
+            Grid.Row="1"
+            ItemsSource="{Binding Path=Debtors}"
+            SelectedItem="{Binding Path=CurrentDebtor}"
+            SelectedIndex="{Binding Path=CurrentIndex}"
+            IsSynchronizedWithCurrentItem="True"
+            Margin="5,0,5,10"
+            CanUserAddRows="False"
+            CanUserDeleteRows="False"
+            IsReadOnly="True"
+            MinRowHeight="12"
+            Name="dbDebtors">
             <DataGrid.Columns>
-
                 <DataGridTextColumn Header="Name" Binding="{Binding Name}">
-
                 </DataGridTextColumn>
-                <DataGridTextColumn Header="Total Amount DKK" Binding="{Binding TotalAmount}"/>
+                <DataGridTextColumn Header="Total Amount DKK" Binding="{Binding TotalAmount}">
+                    <DataGridTextColumn.ElementStyle>
+                        <Style  TargetType="TextBlock">
+                            <Setter Property="Foreground" Value="{Binding Path=TotalAmount, Converter={StaticResource ValueColorConverter}}"/>
+                        </Style>
+                    </DataGridTextColumn.ElementStyle>
+                </DataGridTextColumn>
             </DataGrid.Columns>
             <i:Interaction.Triggers>
                 <i:EventTrigger EventName="MouseDoubleClick">
@@ -49,16 +53,14 @@
                 </i:EventTrigger>
             </i:Interaction.Triggers>
         </DataGrid>
-      
-
-
         <StackPanel Grid.Column="1"
                     Grid.Row="1"
                     HorizontalAlignment="Center"
                     VerticalAlignment="Top"
                     Margin="5,5">
             <Button Margin="5,5" 
-                    Command="{Binding Path=Add_Debtor_Command}">
+                    Command="{Binding Path=Add_Debtor_Command}"
+                    Style="{StaticResource ResourceKey=ButtonStyle}">
                 Add Debtor
             </Button>
         </StackPanel>
