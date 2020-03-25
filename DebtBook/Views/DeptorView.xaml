@@ -18,7 +18,7 @@
             <RowDefinition Height="10*"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
-        <DataGrid ItemsSource="{Binding Path=CurrentDebtor.Debts}" AutoGenerateColumns="False">
+        <DataGrid ItemsSource="{Binding Path=CurrentDebtor.Debts}" AutoGenerateColumns="False" IsReadOnly="True">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Debt amount" Binding="{Binding Amount}"/>
                 <DataGridTextColumn Header="Date" Binding="{Binding Date}"/>
