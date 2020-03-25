@@ -1,10 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
+using System.Windows;
 using System.Windows.Input;
 using DebtBook.Models;
 using DebtBook.ViewModels;
@@ -12,12 +14,14 @@ using DebtBook.Views;
 using Prism.Commands;
 using Prism.Mvvm;
 using System.Windows.Data;
+using System.Xml.Serialization;
 
 namespace DebtBook
 {
     public class MainWindowViewModel : BindableBase
     {
         private ObservableCollection<Debtor> debtors_;
+        private string filename = "";
 
         public MainWindowViewModel()
         {
@@ -102,6 +106,121 @@ namespace DebtBook
             }
         }
 
+        ICommand _closeAppCommand;
+        public ICommand CloseAppCommand
+        {
+            get
+            {
+                return _closeAppCommand ?? (_closeAppCommand = new DelegateCommand(() =>
+                {
+                    App.Current.MainWindow.Close();
+                }));
+            }
+        }
+
+        ICommand _SaveAsCommand;
+        public ICommand SaveAsCommand
+        {
+            get { return _SaveAsCommand ?? (_SaveAsCommand = new DelegateCommand<string>(SaveAsCommand_Execute)); }
+        }
+
+        private void SaveAsCommand_Execute(string argFilename)
+        {
+            if (argFilename == "")
+            {
+                MessageBox.Show("You must enter a file name in the File Name textbox!", "Unable to save file",
+                    MessageBoxButton.OK, MessageBoxImage.Exclamation);
+            }
+            else
+            {
+                filename = argFilename;
+                SaveFileCommand_Execute();
+            }
+        }
+
+        ICommand _SaveCommand;
+        public ICommand SaveCommand
+        {
+            get
+            {
+                return _SaveCommand ?? (_SaveCommand = new DelegateCommand(SaveFileCommand_Execute, SaveFileCommand_CanExecute)
+                  .ObservesProperty(() => Debtors.Count));
+            }
+        }
+
+        private void SaveFileCommand_Execute()
+        {
+            // Create an instance of the XmlSerializer class and specify the type of object to serialize.
+            XmlSerializer serializer = new XmlSerializer(typeof(ObservableCollection<Debtor>));
+            TextWriter writer = new StreamWriter(filename);
+            // Serialize all the agents.
+            serializer.Serialize(writer, Debtors);
+            writer.Close();
+        }
+
+        private bool SaveFileCommand_CanExecute()
+        {
+            return (filename != "") && (Debtors.Count > 0);
+        }
+
+        ICommand _NewFileCommand;
+        public ICommand NewFileCommand
+        {
+            get { return _NewFileCommand ?? (_NewFileCommand = new DelegateCommand(NewFileCommand_Execute)); }
+        }
+
+        private void NewFileCommand_Execute()
+        {
+            MessageBoxResult res = MessageBox.Show("Any unsaved data will be lost. Are you sure you want to initiate a new file?", "Warning",
+                MessageBoxButton.YesNo, MessageBoxImage.Question, MessageBoxResult.No);
+            if (res == MessageBoxResult.Yes)
+            {
+                Debtors.Clear();
+                filename = "";
+            }
+        }
+
+
+        ICommand _OpenFileCommand;
+        public ICommand OpenFileCommand
+        {
+            get { return _OpenFileCommand ?? (_OpenFileCommand = new DelegateCommand<string>(OpenFileCommand_Execute)); }
+        }
+
+        private void OpenFileCommand_Execute(string argFilename)
+        {
+            if (argFilename == "")
+            {
+
+                MessageBox.Show("You must enter a file name in the File Name textbox!", "Unable to save file",
+                    MessageBoxButton.OK, MessageBoxImage.Exclamation);
+            }
+            else
+            {
+                filename = argFilename;
+                var tempAgents = new ObservableCollection<Debtor>();
+
+                // Create an instance of the XmlSerializer class and specify the type of object to deserialize.
+                XmlSerializer serializer = new XmlSerializer(typeof(ObservableCollection<Debtor>));
+                try
+                {
+                    TextReader reader = new StreamReader(filename);
+                    // Deserialize all the agents.
+                    tempAgents = (ObservableCollection<Debtor>)serializer.Deserialize(reader);
+                    reader.Close();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message, "Unable to open file", MessageBoxButton.OK, MessageBoxImage.Error);
+                }
+                Debtors = tempAgents;
+
+                // We have to insert the agents in the existing collection. 
+                //Agents.Clear();
+                //foreach (var agent in tempAgents)
+                //    Add(agent);
+            }
+        }
 
 
         #endregion

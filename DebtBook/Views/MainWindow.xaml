@@ -7,63 +7,95 @@
         xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
         xmlns:prism="http://prismlibrary.com/"
         mc:Ignorable="d"
-        Title="MainWindow" Height="400" Width="800">
-        <Window.DataContext>
-            <local:MainWindowViewModel/>
-        </Window.DataContext>
-    <Grid>
-       <Grid.RowDefinitions>
-            <RowDefinition Height="auto"/>
-            <RowDefinition Height="1*"/>
-       </Grid.RowDefinitions>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="2*"/>
-            <ColumnDefinition Width="*"/>
-        </Grid.ColumnDefinitions>
-       <Label Margin="5,0"
-              Grid.Column="0">Debtors</Label>
-        <DataGrid
-            AutoGenerateColumns="False"
-            Grid.Column="0"
-            Grid.Row="1"
-            ItemsSource="{Binding Path=Debtors}"
-            SelectedItem="{Binding Path=CurrentDebtor}"
-            SelectedIndex="{Binding Path=CurrentIndex}"
-            IsSynchronizedWithCurrentItem="True"
-            Margin="5,0,5,10"
-            CanUserAddRows="False"
-            CanUserDeleteRows="False"
-            IsReadOnly="True"
-            MinRowHeight="12"
-            Name="dbDebtors">
-            <DataGrid.Columns>
-                <DataGridTextColumn Header="Name" Binding="{Binding Name}">
-                </DataGridTextColumn>
-                <DataGridTextColumn Header="Total Amount DKK" Binding="{Binding TotalAmount}">
-                    <DataGridTextColumn.ElementStyle>
-                        <Style  TargetType="TextBlock">
-                            <Setter Property="Foreground" Value="{Binding Path=TotalAmount, Converter={StaticResource ValueColorConverter}}"/>
-                        </Style>
-                    </DataGridTextColumn.ElementStyle>
-                </DataGridTextColumn>
-            </DataGrid.Columns>
-            <i:Interaction.Triggers>
-                <i:EventTrigger EventName="MouseDoubleClick">
-                    <prism:InvokeCommandAction Command="{Binding EditDebtorCommand}"/>
-                </i:EventTrigger>
-            </i:Interaction.Triggers>
-        </DataGrid>
-        <StackPanel Grid.Column="1"
-                    Grid.Row="1"
-                    HorizontalAlignment="Center"
-                    VerticalAlignment="Top"
-                    Margin="5,5">
-            <Button Margin="5,5" 
-                    Command="{Binding Path=Add_Debtor_Command}"
-                    Style="{StaticResource ResourceKey=ButtonStyle}">
-                Add Debtor
-            </Button>
-        </StackPanel>
+        Title="Debtors" Height="400" Width="800">
+    <Window.DataContext>
+        <local:MainWindowViewModel/>
+    </Window.DataContext>
+    <DockPanel>
+        <Menu DockPanel.Dock="Top" Name="mainMenu">
+            <MenuItem Header="_File">
+                <MenuItem Header="_New" Command="{Binding NewFileCommand}"/>
+                <MenuItem Header="_Open" Command="{Binding OpenFileCommand}" CommandParameter="{Binding ElementName=tbxFileName, Path=Text}" />
+                <MenuItem Header="_Save" Command="{Binding SaveCommand}" />
+                <MenuItem Header="Save _As" Command="{Binding SaveAsCommand}" CommandParameter="{Binding ElementName=tbxFileName, Path=Text}" />
+                <MenuItem Header="E_xit" Command="{Binding CloseAppCommand}"/>
+            </MenuItem>
 
-    </Grid>
+        </Menu>
+        <ToolBar DockPanel.Dock="Top" Height="auto"
+                 FontSize="20" FontWeight="ExtraBold"
+                 Background="AliceBlue">
+
+            <Label Content="File _Name: " 
+                   Target="{Binding ElementName=tbxFileName}"
+                   FontSize="12"
+                   FontWeight="Medium"
+                   VerticalAlignment="Bottom"
+            />
+            <TextBox Name="tbxFileName"
+                     FontSize="14"
+                     FontWeight="Medium"
+                     VerticalAlignment="Center"
+                     MinWidth="150"
+            />
+        </ToolBar>
+
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="1*"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="109*"/>
+                <ColumnDefinition Width="389*"/>
+                <ColumnDefinition Width="31*"/>
+                <ColumnDefinition Width="264*"/>
+            </Grid.ColumnDefinitions>
+            <DataGrid
+                AutoGenerateColumns="False"
+                Grid.Column="0"
+                Grid.Row="1"
+                ItemsSource="{Binding Path=Debtors}"
+                SelectedItem="{Binding Path=CurrentDebtor}"
+                SelectedIndex="{Binding Path=CurrentIndex}"
+                IsSynchronizedWithCurrentItem="True"
+                Margin="5,0,5,10"
+                CanUserAddRows="False"
+                CanUserDeleteRows="False"
+                IsReadOnly="True"
+                MinRowHeight="12"
+                Name="dbDebtors" Grid.ColumnSpan="3">
+                <DataGrid.Columns>
+                    <DataGridTextColumn Header="Name" Binding="{Binding Name}">
+                    </DataGridTextColumn>
+                    <DataGridTextColumn Header="Total Amount DKK" Binding="{Binding TotalAmount}">
+                        <DataGridTextColumn.ElementStyle>
+                            <Style  TargetType="TextBlock">
+                                <Setter Property="Foreground" Value="{Binding Path=TotalAmount, Converter={StaticResource ValueColorConverter}}"/>
+                            </Style>
+                        </DataGridTextColumn.ElementStyle>
+                    </DataGridTextColumn>
+                </DataGrid.Columns>
+                <i:Interaction.Triggers>
+                    <i:EventTrigger EventName="MouseDoubleClick">
+                        <prism:InvokeCommandAction Command="{Binding EditDebtorCommand}"/>
+                    </i:EventTrigger>
+                </i:Interaction.Triggers>
+            </DataGrid>
+            <StackPanel Grid.Column="3"
+                        Grid.Row="1"
+                        HorizontalAlignment="Center"
+                        VerticalAlignment="Top"
+                        Margin="80,5,80,0">
+                <Button Margin="5,5" 
+                        Command="{Binding Path=Add_Debtor_Command}"
+                        Style="{StaticResource ResourceKey=ButtonStyle}">
+                    Add Debtor
+                </Button>
+            </StackPanel>
+        </Grid>
+
+
+
+    </DockPanel>
 </Window>
